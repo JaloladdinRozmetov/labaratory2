@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+  <meta charset="UTF-8">
+  <meta name="author" content="Тарас Лабяк">
+  <meta name="description" content="Этот кредитный калькулятор позволяет онлайн производить приблизительный расчет платежей по кредиту при ипотеке онлайн, и сравнивать, какие платежи выгоднее для заемщика.">
+  <meta name="keywords" content="кредитный калькулятор ипотека, онлайн, калькуляторы банков">
+  <title>Кредитный калькулятор</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h3>Кредитный калькулятор: введите данные для расчет</h3>
+<form id="credit">
+  <div>
+    <div>Размер кредита</div>
+    <div><input id="amount" type="number" min="100" max="500000" pattern="[0-9]{2,5}"
+                required title="Введите сумму кредита"/></div>
+    <div>грн</div>
+  </div>
+  <div>
+    <div>Процентная ставка по кредиту</div>
+    <div><input id="interest" type="text" pattern="[0-9]{1,2}([\.\,][0-9]{1,2})?"
+                required title="Введите процентную ставку по кредиту"/></div>
+    <div>
+      <select id="interest_term" title="Введите процентную ставку по кредиту">
+        <option value="month">% в мес.</option>
+        <option value="year">% в год</option>
+      </select>
+    </div>
+  </div>
+  <div>
+    <div>Срок кредита</div>
+    <div><input id="maturity" type="number" min="1" max="48" pattern="[0-9]{1,2}" required title="Введите срок кредита"/></div>
+    <div>
+      <select id="maturity_unit" title="Выберите периодичность начисления процентов">
+        <option value="month">мес.</option>
+        <option value="year">лет</option>
+      </select>
+    </div>
+  </div>
+  <div id="buttons">
+    <button type="submit" id="calculate">Рассчитать</button>
+    <button type="button" id="reset">Сбросить</button>
+  </div>
+</form>
+<table cellspacing="0">
+  <thead>
+  <tr>
+    <th>Мес.</th>
+    <th>Всего</th>
+    <th>% по кредиту</th>
+    <th>В погашение долга</th>
+    <th>В погашение процентов</th>
+    <th>Остаток</th>
+  </tr>
+  </thead>
+  <tbody id="months"></tbody>
+</table>
+<script src="js/script.js"></script>
+</body>
+</html>
